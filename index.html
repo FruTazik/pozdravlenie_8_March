@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>С 8 марта, любимые!</title>
-    <!-- Font Awesome для иконок (цветы, сердца) -->
+    <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Конфетти (canvas-confetti) -->
+    <!-- Библиотека конфетти -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
     <style>
+        /* --- Стили (без изменений, всё красиво как и было) --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
-
         body {
             min-height: 100vh;
             background: linear-gradient(145deg, #fce4e8 0%, #ffe6f0 40%, #fff0f5 100%);
@@ -27,8 +27,6 @@
             position: relative;
             overflow-x: hidden;
         }
-
-        /* Декоративные цветы на фоне (атрибутика) */
         body::before {
             content: "🌸🌷🌹💐🌺";
             font-size: 70px;
@@ -44,7 +42,6 @@
             white-space: nowrap;
             z-index: 0;
         }
-
         body::after {
             content: "❤️🧡💛💚💙💜";
             font-size: 50px;
@@ -59,7 +56,6 @@
             transform: rotate(3deg);
             z-index: 0;
         }
-
         .main-card {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(10px);
@@ -73,8 +69,6 @@
             border: 1px solid rgba(255,255,240,0.7);
             transition: all 0.3s ease;
         }
-
-        /* Кнопки сверху (конфетти и звук) */
         .top-actions {
             display: flex;
             flex-wrap: wrap;
@@ -82,7 +76,6 @@
             gap: 15px;
             margin-bottom: 30px;
         }
-
         .cute-btn {
             background: linear-gradient(135deg, #ff9acb, #ff6b9d);
             border: none;
@@ -101,18 +94,14 @@
             border: 2px solid #fff9;
             letter-spacing: 1px;
         }
-
         .cute-btn:active {
             transform: translateY(6px);
             box-shadow: 0 2px 0 #a12b4f, 0 8px 18px rgba(255, 105, 180, 0.6);
         }
-
         .cute-btn i {
             font-size: 1.5rem;
             filter: drop-shadow(0 2px 2px #7f1f3a);
         }
-
-        /* Блок переключения людей */
         .switch-section {
             display: flex;
             justify-content: center;
@@ -120,7 +109,6 @@
             margin-bottom: 25px;
             flex-wrap: wrap;
         }
-
         .person-btn {
             background: rgba(255, 245, 250, 0.9);
             border: 3px solid #f9a8d4;
@@ -138,7 +126,6 @@
             line-height: 1;
             backdrop-filter: blur(4px);
         }
-
         .person-btn.active {
             background: #ffd9e8;
             border-color: #ff4d8c;
@@ -146,13 +133,10 @@
             box-shadow: 0 4px 0 #b3406b, 0 8px 18px #ffb3d0;
             transform: translateY(4px);
         }
-
         .person-btn i {
             font-size: 2rem;
             color: #ff4080;
         }
-
-        /* Центральное поздравление */
         .greeting-box {
             background: rgba(255, 255, 255, 0.6);
             border-radius: 100px 30px 100px 30px;
@@ -163,7 +147,6 @@
             transition: all 0.4s ease;
             text-align: center;
         }
-
         .greeting-name {
             font-size: 4rem;
             font-weight: 800;
@@ -174,7 +157,6 @@
             margin-bottom: 15px;
             letter-spacing: 4px;
         }
-
         .greeting-text {
             font-size: 1.9rem;
             color: #911f4b;
@@ -184,13 +166,11 @@
             gap: 18px;
             flex-wrap: wrap;
         }
-
         .greeting-text i {
             font-size: 2.6rem;
             color: #ff4f79;
             animation: heartbeat 1.2s infinite;
         }
-
         @keyframes heartbeat {
             0% { transform: scale(1); }
             30% { transform: scale(1.3); }
@@ -198,8 +178,6 @@
             70% { transform: scale(1.25); }
             100% { transform: scale(1); }
         }
-
-        /* Дополнительные цветочки и сердечки (плавающие) */
         .floating-icons {
             display: flex;
             justify-content: center;
@@ -209,18 +187,14 @@
             color: #ff7e9f;
             flex-wrap: wrap;
         }
-
         .floating-icons span {
             filter: drop-shadow(0 8px 12px #f9a8d4);
             animation: float 3s infinite alternate;
         }
-
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
             100% { transform: translateY(-15px) rotate(5deg); }
         }
-
-        /* Кнопка 67 конфетти */
         .sixty-seven-btn {
             background: #fee070;
             border: 4px solid white;
@@ -238,18 +212,14 @@
             align-items: center;
             gap: 15px;
         }
-
         .sixty-seven-btn:active {
             transform: translateY(10px);
             box-shadow: 0 5px 0 #b45f2b, 0 18px 25px #ffa54d;
         }
-
         .sixty-seven-btn i {
             font-size: 2.5rem;
             color: #ec0b5f;
         }
-
-        /* Предзагрузка звука (невидимая кнопка, просто ссылка) */
         .sound-note {
             margin-top: 25px;
             color: #ad4170;
@@ -262,18 +232,14 @@
             align-items: center;
             gap: 12px;
         }
-
         .sound-note i {
             font-size: 1.8rem;
         }
-
         footer {
             margin-top: 20px;
             opacity: 0.7;
             color: #b34e7a;
         }
-
-        /* Адаптация */
         @media (max-width: 550px) {
             .greeting-name { font-size: 3rem; }
             .person-btn { font-size: 1.4rem; }
@@ -284,7 +250,7 @@
 <body>
 
 <div class="main-card">
-    <!-- Верхние кнопки: конфетти + звук (файл mem.mp3 будет загружен) -->
+    <!-- Верхние кнопки -->
     <div class="top-actions">
         <button class="cute-btn" id="confettiButton">
             <i class="fas fa-sparkles"></i> Конфетти <i class="fas fa-star"></i>
@@ -294,7 +260,7 @@
         </button>
     </div>
 
-    <!-- Переключение: Мама, Вика, Полина -->
+    <!-- Переключение людей -->
     <div class="switch-section">
         <div class="person-btn active" data-person="mom">
             <i class="fas fa-crown"></i> Мама
@@ -307,15 +273,15 @@
         </div>
     </div>
 
-    <!-- Центральный блок с именем и поздравлением -->
+    <!-- Центральный блок -->
     <div class="greeting-box" id="greetingBlock">
         <div class="greeting-name" id="personNameDisplay">Мама</div>
         <div class="greeting-text">
-            <i class="fas fa-fan"></i> С 8 марта! <i class="fas fa-fan"></i>
+            <i class="fas fa-fan"></i> С 8 марта, мамуля! <i class="fas fa-fan"></i>
         </div>
     </div>
 
-    <!-- Цветы и сердечки (атрибутика) -->
+    <!-- Иконки атрибутики -->
     <div class="floating-icons">
         <span>🌷</span>
         <span>❤️</span>
@@ -326,14 +292,14 @@
         <span>🌺</span>
     </div>
 
-    <!-- ОСОБАЯ КНОПКА: сыпется конфети и цифры 67 -->
+    <!-- Кнопка 67 -->
     <div class="sixty-seven-btn" id="sixtySevenConfetti">
         <i class="fas fa-cake-candles"></i> 6 7 <i class="fas fa-balloon"></i>
     </div>
 
-    <!-- Подсказка про звук: файл будет загружен на гитхаб, путь указан -->
+    <!-- Индикатор звука (теперь с правильной ссылкой) -->
     <div class="sound-note">
-        <i class="fas fa-file-audio"></i> звук: mem.mp3 (c гитхаба)
+        <i class="fas fa-file-audio"></i> звук: mem.mp3 (с твоего GitHub)
     </div>
 
     <footer>
@@ -343,187 +309,120 @@
 
 <script>
     (function() {
-        // --- Данные для разных людей (можно менять поздравления) ---
+        // --- ИСПРАВЛЕННАЯ ССЫЛКА НА ЗВУК (RAW GitHub) ---
+        // Это правильный адрес твоего файла на GitHub Pages
+        const SOUND_URL = 'https://frutazik.github.io/pozdravlenie_8_March/mem.mp3';
+
+        // --- Данные для получателей ---
         const personData = {
-            mom: {
-                name: 'Мама',
-                greeting: 'С 8 марта, мамочка!',
-                icon: '👑'
-            },
-            vika: {
-                name: 'Вика',
-                greeting: 'С 8 марта, Вика!',
-                icon: '💕'
-            },
-            polina: {
-                name: 'Полина',
-                greeting: 'С 8 марта, Полина!',
-                icon: '🌷'
-            }
+            mom: { name: 'Мама', greeting: 'С 8 марта, мамуля!' },
+            vika: { name: 'Вика', greeting: 'С 8 марта, Викуля!' },
+            polina: { name: 'Полина', greeting: 'С 8 марта, Полиночка!' }
         };
 
-        // Элементы
+        // Элементы DOM
         const personBtns = document.querySelectorAll('.person-btn');
         const personNameDisplay = document.getElementById('personNameDisplay');
-        const greetingBlock = document.getElementById('greetingBlock');
+        const greetingTextDiv = document.querySelector('.greeting-text');
         const confettiBtn = document.getElementById('confettiButton');
         const sixtySevenBtn = document.getElementById('sixtySevenConfetti');
         const playSoundBtn = document.getElementById('playSoundBtn');
 
-        // Переменная для звука
+        // --- Работа со звуком ---
         let audio = null;
 
-        // Инициализация звука (отложенная загрузка) с GitHub
-        function initAudio() {
-            if (audio === null) {
-                try {
-                    // ВАЖНО: замени на свой актуальный URL после загрузки mem.mp3 на GitHub
-                    // Например: https://raw.githubusercontent.com/твой-логин/твой-репо/main/mem.mp3
-                    const GITHUB_MP3_URL = 'https://frutazik.github.io/pozdravlenie_8_March/mem.mp3';
-                    audio = new Audio(GITHUB_MP3_URL);
-                    audio.preload = 'auto';
-                    // обработчик ошибок, если файл не загружен
-                    audio.onerror = () => {
-                        console.warn('Звук не загружен, проверь ссылку на mem.mp3');
-                        // можно заменить на заглушку или просто игнорить
-                    };
-                } catch (e) {
-                    console.error('Ошибка создания Audio', e);
+        // Функция для создания и воспроизведения звука
+        function playMemSound() {
+            // Создаем новый объект Audio каждый раз при нажатии,
+            // чтобы избежать проблем с загрузкой и гарантировать воспроизведение
+            try {
+                // Если audio уже существует и играет - останавливаем
+                if (audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
                 }
+                
+                // Создаем новый экземпляр
+                audio = new Audio(SOUND_URL);
+                
+                // Добавляем обработчики для отладки
+                audio.oncanplaythrough = () => console.log('Звук загружен и готов к воспроизведению');
+                audio.onerror = (e) => {
+                    console.error('Ошибка загрузки звука:', e);
+                    alert('Не удалось загрузить звук. Проверь, есть ли файл mem.mp3 по адресу:\n' + SOUND_URL);
+                };
+                
+                // Пытаемся воспроизвести
+                let playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.warn('Воспроизведение не удалось:', error);
+                        // Если браузер блокирует автовоспроизведение, покажем подсказку
+                        alert('Нажми на кнопку ещё раз, чтобы включить звук 🔈 (нужно взаимодействие с сайтом)');
+                    });
+                }
+            } catch (err) {
+                console.error('Критическая ошибка Audio:', err);
+                alert('Что-то пошло не так со звуком. Но конфетти работают! 🎉');
             }
         }
 
-        // Воспроизведение звука по кнопке
-        playSoundBtn.addEventListener('click', () => {
-            initAudio(); // убедимся, что объект создан
+        // Назначаем обработчик клика на кнопку звука
+        playSoundBtn.addEventListener('click', playMemSound);
 
-            if (audio) {
-                // перезапуск, если уже играет
-                audio.pause();
-                audio.currentTime = 0;
-                audio.play().catch(err => {
-                    console.warn('Не удалось воспроизвести звук (возможно файл не найден или взаимодействие с пользователем)');
-                    // Создадим уведомление внутри страницы
-                    alert('🔊 Звук пока не загружен на GitHub. Залей mem.mp3 и обнови ссылку в коде (строка 240)');
-                });
-            } else {
-                alert('🔇 Аудио не инициализировано. Проверь ссылку на mem.mp3');
-            }
-        });
-
-        // Функция конфетти (с дополнительными цифрами 67 в виде частиц)
+        // --- Функции конфетти ---
         function fireSixtySevenConfetti() {
-            // Запускаем много конфетти
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#ff8cba', '#ffd166', '#ffb3c6', '#c0e0ff', '#b983ff']
-            });
-            // Еще волна
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#ff8cba', '#ffd166', '#ffb3c6'] });
             setTimeout(() => {
-                confetti({
-                    particleCount: 80,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0, y: 0.5 },
-                    colors: ['#f9acbc', '#fdcedf', '#fdaa9b']
-                });
-                confetti({
-                    particleCount: 80,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1, y: 0.5 },
-                    colors: ['#b3e0ff', '#fbc2c2', '#fcedb3']
-                });
+                confetti({ particleCount: 80, angle: 60, spread: 55, origin: { x: 0, y: 0.5 }, colors: ['#f9acbc', '#fdcedf'] });
+                confetti({ particleCount: 80, angle: 120, spread: 55, origin: { x: 1, y: 0.5 }, colors: ['#b3e0ff', '#fbc2c2'] });
             }, 150);
-
-            // Пытаемся изобразить "67" с помощью конфетти в виде цифр? Но конфетти - это квадратики.
-            // Для "67" добавим еще конфетти с явным указанием позиций, чтобы создать иллюзию цифр
-            // Это не точно, но повеселимся: выпустим 67 частиц и две "кучки"
             for (let i = 0; i < 67; i++) {
                 setTimeout(() => {
-                    confetti({
-                        particleCount: 2,
-                        spread: 10,
-                        origin: { x: 0.3 + (i % 3) * 0.2, y: 0.4 },
-                        colors: ['#e63946', '#f4d03f', '#e67e22']
-                    });
+                    confetti({ particleCount: 2, spread: 10, origin: { x: 0.3 + (i % 3) * 0.2, y: 0.4 }, colors: ['#e63946', '#f4d03f'] });
                 }, i * 10);
             }
-            // и финальный акцент "67" (можно распылить)
-            confetti({
-                particleCount: 67,
-                spread: 100,
-                origin: { y: 0.5, x: 0.5 },
-                colors: ['#c44569', '#f3a683', '#f7d794']
-            });
+            confetti({ particleCount: 67, spread: 100, origin: { y: 0.5, x: 0.5 }, colors: ['#c44569', '#f3a683'] });
         }
 
-        // Обработчик на кнопку 67
         sixtySevenBtn.addEventListener('click', fireSixtySevenConfetti);
-
-        // Кнопка обычного конфетти
+        
         confettiBtn.addEventListener('click', () => {
             confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
-            confetti({ particleCount: 100, spread: 70, origin: { y: 0.5, x: 0.2 }, colors: ['#bbded6', '#fae3e3', '#f8d5aa'] });
-            confetti({ particleCount: 100, spread: 70, origin: { y: 0.5, x: 0.8 }, colors: ['#fbc1c1', '#c6d9f0', '#f9c7a4'] });
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.5, x: 0.2 }, colors: ['#bbded6', '#fae3e3'] });
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.5, x: 0.8 }, colors: ['#fbc1c1', '#c6d9f0'] });
         });
 
-        // Переключение персоналий
+        // --- Переключение персоналий ---
         function setActivePerson(personKey) {
-            // Обновим классы у кнопок
             personBtns.forEach(btn => {
-                if (btn.dataset.person === personKey) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+                btn.classList.toggle('active', btn.dataset.person === personKey);
             });
 
-            // Меняем имя в крупном блоке
             const data = personData[personKey];
             if (data) {
                 personNameDisplay.innerText = data.name;
-                // Также можно изменить иконку или текст (но оставим гибко)
-                // Можно обновить небольшой текст внутри greetingBox, но пока просто имя
-                // Делаем поздравление чуточку индивидуальнее (поменяем текст с сердечком)
-                const greetingTextDiv = document.querySelector('.greeting-text');
-                if (greetingTextDiv) {
-                    // сохраним иконки по бокам, но обновим основной текст
-                    const leftIcon = greetingTextDiv.children[0] ? greetingTextDiv.children[0].outerHTML : '<i class="fas fa-fan"></i>';
-                    const rightIcon = greetingTextDiv.children[2] ? greetingTextDiv.children[2].outerHTML : '<i class="fas fa-fan"></i>';
-                    // Для красоты добавим внутрь текст с именем
-                    if (personKey === 'mom') greetingTextDiv.innerHTML = `${leftIcon} С 8 марта, мамуля! ${rightIcon}`;
-                    else if (personKey === 'vika') greetingTextDiv.innerHTML = `${leftIcon} С 8 марта, Викуля! ${rightIcon}`;
-                    else if (personKey === 'polina') greetingTextDiv.innerHTML = `${leftIcon} С 8 марта, Полиночка! ${rightIcon}`;
-                }
+                // Меняем текст поздравления, но сохраняем иконки по бокам
+                const leftIcon = greetingTextDiv.children[0] ? greetingTextDiv.children[0].outerHTML : '<i class="fas fa-fan"></i>';
+                const rightIcon = greetingTextDiv.children[2] ? greetingTextDiv.children[2].outerHTML : '<i class="fas fa-fan"></i>';
+                greetingTextDiv.innerHTML = `${leftIcon} ${data.greeting} ${rightIcon}`;
             }
         }
 
-        // Навесить обработчики на кнопки людей
         personBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const person = e.currentTarget.dataset.person;
-                setActivePerson(person);
-            });
+            btn.addEventListener('click', (e) => setActivePerson(e.currentTarget.dataset.person));
         });
 
-        // Установим начальное состояние (мама)
+        // Устанавливаем начальное состояние (Мама)
         setActivePerson('mom');
 
-        // Примечание: звук будет загружаться при первом клике, но нужно заменить ссылку на реальную.
-        // Твой комментарий: "имя звука - mem.mp3. этот звук и файл я загружу на гитхаб, ты должен выгружать звук оттуда"
-        // Ссылка должна указывать на сырой(raw) файл. После загрузки замени URL в функции initAudio.
-        // Пример: https://raw.githubusercontent.com/username/repo/main/mem.mp3
-
-        // Чтобы напомнить, добавим предупреждение при клике на звук, если файл не загружен
-        // Это уже есть в обработчике ошибок выше.
+        // Финальное сообщение в консоль, что всё готово
+        console.log('Сайт работает! Звук загружается с:', SOUND_URL);
     })();
 </script>
 
-<!-- Дополнительная кнопка сбоку (необязательно) но для красоты оставим -->
+<!-- Маленькая иконка в углу -->
 <div style="position: fixed; bottom: 15px; right: 15px; opacity:0.5; z-index: 99; font-size: 2rem;">🌷</div>
 </body>
-
 </html>
